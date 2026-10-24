@@ -118,7 +118,7 @@ ComponentName/
 
 - Auto-login is enabled by default with credentials: `dev@payloadcms.com` / `test`
 - To disable: pass `--no-auto-login` flag or set `PAYLOAD_PUBLIC_DISABLE_AUTO_LOGIN=false`
-- Default database is MongoDB (in-memory). Switch to Postgres with `PAYLOAD_DATABASE=postgres`
+- Default `PAYLOAD_DATABASE` is `mongodb`, and `pnpm dev` exits unless that database accepts connections. `PAYLOAD_DATABASE=sqlite` needs no database service. `PAYLOAD_DATABASE=postgres` uses Postgres.
 - Docker services: `pnpm docker:start` / `pnpm docker:clean` / `pnpm docker:test`
 
 ### Playwright MCP
@@ -484,3 +484,10 @@ import { MyClientComponent } from '../../exports/client/index.js'
 ```
 
 **Testing bundling changes:** Always test with `pnpm prepare-run-test-against-prod` followed by `pnpm dev:prod <suite>`. Dev mode (`pnpm dev`) doesn't catch these issues.
+
+## Cursor Cloud specific instructions
+
+- Node.js `v24.15.0` and pnpm `11.9.0` are installed on `/usr/local/bin`. Login shells put that directory first. If `node -v` is older, run `export PATH="/usr/local/bin:$PATH"`.
+- `pnpm install --frozen-lockfile` installs dependencies. `pnpm dev` serves the admin from TypeScript source against `test/_community` at `http://localhost:3000/admin`. Auto-login is `dev@payloadcms.com` / `test`.
+- This environment has no Docker daemon. Keep `PAYLOAD_DATABASE=sqlite` in `.env` (setup creates that file when it is missing). MongoDB and Postgres profiles need `pnpm docker:start`, which is not available here.
+- `pnpm run build:core` compiles core packages. The Payload declaration bundle exceeds Node's default heap, so run `NODE_OPTIONS=--max-old-space-size=8192 pnpm run build:core --concurrency=1`.
