@@ -59,6 +59,8 @@ export default buildConfig({
   editor: defaultLexical,
   db: mongooseAdapter({
     url: process.env.DATABASE_URL,
+    // Atlas rejects some multi-document transaction retries from this driver.
+    transactionOptions: false,
   }),
   collections: [
     {

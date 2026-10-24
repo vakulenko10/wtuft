@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { AdminBar } from '@/components/AdminBar'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { RugScatter } from '@/components/RugScatter'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { ensureStartsWith } from '@/utilities/ensureStartsWith'
 import { Providers } from '@/providers'
@@ -56,8 +57,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <AdminBar />
           <LivePreviewListener />
 
+          <RugScatter />
           <Header />
-          <main>{children}</main>
+          <main className="relative z-10">{children}</main>
           <Footer />
         </Providers>
       </body>

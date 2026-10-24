@@ -17,7 +17,9 @@ import { isAdmin } from '@/access/isAdmin'
 import { isDocumentOwner } from '@/access/isDocumentOwner'
 
 const generateTitle: GenerateTitle<Product | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Ecommerce Template` : 'Payload Ecommerce Template'
+  const siteName = process.env.SITE_NAME || 'Wtuft'
+
+  return doc?.title ? `${doc.title} | ${siteName}` : siteName
 }
 
 const generateURL: GenerateURL<Product | Page> = ({ doc }) => {

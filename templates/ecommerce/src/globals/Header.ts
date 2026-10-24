@@ -3,6 +3,8 @@ import type { GlobalConfig } from 'payload'
 import { adminOnly } from '@/access/adminOnly'
 import { link } from '@/fields/link'
 
+import { revalidateGlobal } from './revalidateGlobal'
+
 export const Header: GlobalConfig = {
   slug: 'header',
   access: {
@@ -21,5 +23,8 @@ export const Header: GlobalConfig = {
       maxRows: 6,
     },
   ],
+  hooks: {
+    afterChange: [revalidateGlobal('header')],
+  },
   versions: false,
 }

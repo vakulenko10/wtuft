@@ -7,6 +7,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import { homeStaticData } from '@/endpoints/seed/home-static'
+import { FeaturedRugs } from '@/components/FeaturedRugs'
 import React from 'react'
 
 import type { Page } from '@/payload-types'
@@ -64,6 +65,7 @@ export default async function Page({ params }: Args) {
   return (
     <article className="pt-16 pb-24">
       <RenderHero {...hero} />
+      {slug === 'home' ? <FeaturedRugs /> : null}
       <RenderBlocks blocks={layout} />
     </article>
   )

@@ -11,6 +11,10 @@ const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://loc
 
 const nextConfig: NextConfig = {
   images: {
+    // The dev server is one process. Optimizing /api/media images fetches them
+    // from this same server and times out. Serve the uploaded files directly.
+    unoptimized: process.env.NODE_ENV !== 'production',
+    dangerouslyAllowLocalIP: true,
     localPatterns: [
       {
         pathname: '/api/media/file/**',
@@ -35,6 +39,13 @@ const nextConfig: NextConfig = {
       '.cjs': ['.cts', '.cjs'],
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
+    }
+
+    // Webpack bundles file-type and drops its dynamic `node:fs/promises` import,
+    // which makes /api/media/file return 500. Serve image types from a small shim.
+    webpackConfig.resolve.alias = {
+      ...webpackConfig.resolve.alias,
+      'file-type': path.resolve(dirname, 'file-type-shim.js'),
     }
 
     return webpackConfig

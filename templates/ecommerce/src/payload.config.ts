@@ -41,6 +41,9 @@ export default buildConfig({
   collections: [Users, Pages, Categories, Media],
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || '',
+    // Atlas rejects some multi-document transaction retries from this driver
+    // ("active transaction number"). The shop seed writes many documents in one request.
+    transactionOptions: false,
   }),
   editor: lexicalEditor({
     features: () => {

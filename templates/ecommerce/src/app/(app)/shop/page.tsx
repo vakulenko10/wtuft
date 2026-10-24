@@ -76,7 +76,11 @@ export default async function ShopPage({ searchParams }: Props) {
   const resultsText = products.docs.length > 1 ? 'results' : 'result'
 
   return (
-    <div>
+    <div className="container py-16">
+      <header className="mb-8 max-w-2xl">
+        <p className="mb-2 text-xs tracking-[0.28em] text-primary uppercase">The collection</p>
+        <h1 className="text-3xl text-foreground">Tufted rugs</h1>
+      </header>
       {searchValue ? (
         <p className="mb-4">
           {products.docs?.length === 0

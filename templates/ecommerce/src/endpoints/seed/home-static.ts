@@ -19,7 +19,7 @@ export const homeStaticData: () => RequiredDataFromCollectionSlug<'pages'> = () 
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'Payload Ecommerce Template',
+                  text: 'Tufted rugs, made by hand',
                   version: 1,
                 },
               ],
@@ -61,7 +61,7 @@ export const homeStaticData: () => RequiredDataFromCollectionSlug<'pages'> = () 
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: ' to make your account and seed content for your website.',
+                  text: ', then browse the collection.',
                   version: 1,
                 },
               ],
@@ -81,8 +81,8 @@ export const homeStaticData: () => RequiredDataFromCollectionSlug<'pages'> = () 
     },
     layout: [],
     meta: {
-      description: 'An open-source ecommerce site built with Payload and Next.js.',
-      title: 'Payload Ecommerce Template',
+      description: 'Hand-tufted rugs from the Wtuft studio.',
+      title: 'Wtuft',
     },
     title: 'Home',
   }

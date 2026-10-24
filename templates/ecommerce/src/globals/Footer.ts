@@ -3,6 +3,8 @@ import type { GlobalConfig } from 'payload'
 import { adminOnly } from '@/access/adminOnly'
 import { link } from '@/fields/link'
 
+import { revalidateGlobal } from './revalidateGlobal'
+
 export const Footer: GlobalConfig = {
   slug: 'footer',
   access: {
@@ -21,5 +23,8 @@ export const Footer: GlobalConfig = {
       maxRows: 6,
     },
   ],
+  hooks: {
+    afterChange: [revalidateGlobal('footer')],
+  },
   versions: false,
 }

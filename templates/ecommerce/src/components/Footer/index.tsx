@@ -19,13 +19,13 @@ export async function Footer() {
   const copyrightName = COMPANY_NAME || SITE_NAME || ''
 
   return (
-    <footer className="text-sm text-neutral-500 dark:text-neutral-400">
+    <footer className="relative z-10 bg-background text-sm text-foreground">
       <div className="container">
         <div className="flex w-full flex-col gap-6 border-t border-neutral-200 py-12 text-sm md:flex-row md:gap-12 dark:border-neutral-700">
           <div>
-            <Link className="flex items-center gap-2 text-black md:pt-1 dark:text-white" href="/">
-              <LogoIcon className="w-6" />
-              <span className="sr-only">{SITE_NAME}</span>
+            <Link className="flex items-center gap-3 text-foreground md:pt-1" href="/">
+              <LogoIcon className="w-8" />
+              <span className="text-sm font-medium tracking-[0.28em] uppercase">Wtuft</span>
             </Link>
           </div>
           <Suspense
@@ -54,12 +54,8 @@ export async function Footer() {
             {copyrightName.length && !copyrightName.endsWith('.') ? '.' : ''} All rights reserved.
           </p>
           <hr className="mx-4 hidden h-4 w-px border-l border-neutral-400 md:inline-block" />
-          <p>Designed in Michigan</p>
-          <p className="md:ml-auto">
-            <a className="text-black dark:text-white" href="https://payloadcms.com">
-              Crafted by Payload
-            </a>
-          </p>
+          <p>Hand-tufted rugs</p>
+          <p className="md:ml-auto">Pieces made to order</p>
         </div>
       </div>
     </footer>
