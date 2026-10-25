@@ -27,8 +27,9 @@ export function CollectionRibbonClient({ products }: { products: RibbonItem[] })
   const autoScroll = useMemo(
     () =>
       AutoScroll({
-        playOnInit: true,
+        playOnInit: false,
         speed: 0.6,
+        startDelay: 0,
         stopOnFocusIn: false,
         stopOnInteraction: false,
         stopOnMouseEnter: false,
@@ -47,12 +48,17 @@ export function CollectionRibbonClient({ products }: { products: RibbonItem[] })
     api.on('autoScroll:stop', onStop)
 
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const plugin = api.plugins()?.autoScroll
 
-    if (motion.matches) plugin?.stop()
-    else if (plugin && !plugin.isPlaying()) plugin.play()
+    const start = () => {
+      const plugin = api.plugins()?.autoScroll
+      if (!plugin || motion.matches) return
+      if (!plugin.isPlaying()) plugin.play()
+      setIsPlaying(plugin.isPlaying())
+    }
 
-    setIsPlaying(Boolean(plugin?.isPlaying()) && !motion.matches)
+    api.on('reInit', start)
+    start()
+    const frame = window.requestAnimationFrame(start)
 
     const onMotionChange = () => {
       const current = api.plugins()?.autoScroll
@@ -64,8 +70,10 @@ export function CollectionRibbonClient({ products }: { products: RibbonItem[] })
     motion.addEventListener('change', onMotionChange)
 
     return () => {
+      window.cancelAnimationFrame(frame)
       api.off('autoScroll:play', onPlay)
       api.off('autoScroll:stop', onStop)
+      api.off('reInit', start)
       motion.removeEventListener('change', onMotionChange)
     }
   }, [api])
@@ -136,9 +144,6 @@ export function CollectionRibbonClient({ products }: { products: RibbonItem[] })
         aria-label="Rugs in the collection"
         className="w-full"
         id="collection-ribbon"
-        onFocusCapture={() => {
-          api?.plugins()?.autoScroll?.stop()
-        }}
         opts={{ align: 'start', loop: true }}
         plugins={[autoScroll]}
         setApi={setApi}
