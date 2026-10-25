@@ -16,12 +16,16 @@ export async function Footer() {
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : '')
   const skeleton = 'w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700'
 
-  const copyrightName = COMPANY_NAME || SITE_NAME || ''
+  const configuredName = COMPANY_NAME || SITE_NAME || ''
+  const copyrightName =
+    configuredName === 'Payload Inc.' || configuredName === 'Payload Commerce'
+      ? 'Wtuft'
+      : configuredName
 
   return (
     <footer className="relative z-10 bg-background text-sm text-foreground">
       <div className="container">
-        <div className="flex w-full flex-col gap-6 border-t border-neutral-200 py-12 text-sm md:flex-row md:gap-12 dark:border-neutral-700">
+        <div className="flex w-full flex-col gap-6 border-t border-[#8BBB92] py-12 text-sm md:flex-row md:gap-12">
           <div>
             <Link className="flex items-center gap-3 text-foreground md:pt-1" href="/">
               <LogoIcon className="w-8" />
@@ -47,13 +51,13 @@ export async function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
+      <div className="border-t border-[#8BBB92] py-6 text-sm">
         <div className="container mx-auto flex w-full flex-col items-center gap-1 md:flex-row md:gap-0">
           <p>
             &copy; {copyrightDate} {copyrightName}
             {copyrightName.length && !copyrightName.endsWith('.') ? '.' : ''} All rights reserved.
           </p>
-          <hr className="mx-4 hidden h-4 w-px border-l border-neutral-400 md:inline-block" />
+          <hr className="mx-4 hidden h-4 w-px border-l border-[#8BBB92] md:inline-block" />
           <p>Hand-tufted rugs</p>
           <p className="md:ml-auto">Pieces made to order</p>
         </div>

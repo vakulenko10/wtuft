@@ -24,13 +24,19 @@ export async function FeaturedRugs() {
   if (!products.docs.length) return null
 
   return (
-    <section className="container bg-background pt-8 pb-4">
+    <section className="container bg-background py-16">
       <div className="mb-8 flex items-end justify-between gap-4">
         <div>
           <p className="mb-2 text-xs tracking-[0.28em] text-primary uppercase">In the studio</p>
           <h2 className="text-2xl text-foreground">Rugs ready to ship</h2>
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-foreground">
+            A few pieces from the current run, shown up close.
+          </p>
         </div>
-        <Link className="text-sm text-primary underline-offset-4 hover:underline" href="/shop">
+        <Link
+          className="inline-flex min-h-11 items-center text-sm text-primary underline-offset-4 hover:underline"
+          href="/shop"
+        >
           View the collection
         </Link>
       </div>

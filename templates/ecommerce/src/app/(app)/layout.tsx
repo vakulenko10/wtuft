@@ -53,13 +53,21 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
+        <a
+          className="absolute start-4 top-4 z-50 -translate-y-24 rounded-full bg-[#f4f6f2] px-5 py-3 text-sm font-medium text-[#092328] focus:translate-y-0"
+          href="#storefront-content"
+        >
+          Skip to content
+        </a>
         <Providers>
           <AdminBar />
           <LivePreviewListener />
 
           <RugScatter />
           <Header />
-          <main className="relative z-10">{children}</main>
+          <main className="relative z-10" id="storefront-content" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>

@@ -7,7 +7,9 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import { homeStaticData } from '@/endpoints/seed/home-static'
+import { CollectionRibbon } from '@/components/CollectionRibbon'
 import { FeaturedRugs } from '@/components/FeaturedRugs'
+import { StorefrontHero } from '@/components/StorefrontHero'
 import React from 'react'
 
 import type { Page } from '@/payload-types'
@@ -62,10 +64,19 @@ export default async function Page({ params }: Args) {
 
   const { hero, layout } = page
 
+  if (slug === 'home') {
+    return (
+      <article>
+        <StorefrontHero />
+        <CollectionRibbon />
+        <FeaturedRugs />
+      </article>
+    )
+  }
+
   return (
     <article className="pt-16 pb-24">
       <RenderHero {...hero} />
-      {slug === 'home' ? <FeaturedRugs /> : null}
       <RenderBlocks blocks={layout} />
     </article>
   )
@@ -78,7 +89,25 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
     slug,
   })
 
-  return generateMeta({ doc: page })
+  const meta = await generateMeta({ doc: page })
+
+  if (slug === 'home') {
+    const description =
+      'Hand-tufted rugs made in small runs. Wool and cotton pieces for rooms that want to feel settled.'
+
+    return {
+      ...meta,
+      description,
+      openGraph: {
+        ...meta.openGraph,
+        description,
+        title: 'Wtuft — Hand-tufted rugs',
+      },
+      title: 'Wtuft — Hand-tufted rugs',
+    }
+  }
+
+  return meta
 }
 
 const queryPageBySlug = async ({ slug }: { slug: string }) => {

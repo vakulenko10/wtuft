@@ -87,11 +87,11 @@
 }
 
 :root {
-  --background: #f4f6f2;
+  --background: #e5f0e6;
   --foreground: #092328;
-  --card: #ffffff;
+  --card: #f7faf7;
   --card-foreground: #092328;
-  --popover: #ffffff;
+  --popover: #f7faf7;
   --popover-foreground: #092328;
   --primary: #12544f;
   --primary-foreground: #f7faf7;
@@ -226,7 +226,7 @@ html[data-theme='light'] {
 a,
 input,
 button {
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#2A835F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f6f2] dark:focus-visible:ring-[#8BBB92] dark:focus-visible:ring-offset-[#092328];
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#2A835F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#e5f0e6] dark:focus-visible:ring-[#8BBB92] dark:focus-visible:ring-offset-[#092328];
 }
 
 .rug-scatter {
