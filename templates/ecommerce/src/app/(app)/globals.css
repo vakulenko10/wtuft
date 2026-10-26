@@ -233,6 +233,7 @@ button {
   position: fixed;
   inset: 0;
   z-index: 0;
+  display: none;
   overflow: hidden;
   pointer-events: none;
 }
@@ -270,8 +271,8 @@ button {
   rotate: -8deg;
 }
 
-@media (max-width: 1439px) {
+@media (min-width: 1440px) {
   .rug-scatter {
-    display: none;
+    display: block;
   }
 }

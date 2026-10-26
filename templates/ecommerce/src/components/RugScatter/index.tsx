@@ -1,8 +1,8 @@
 const rugs = [
   { className: 'rug-a', src: '/rugs/straw-hat.webp' },
-  { className: 'rug-b', src: '/rugs/botanical.jpg' },
-  { className: 'rug-c', src: '/rugs/arch.jpg' },
-  { className: 'rug-d', src: '/rugs/wave.jpg' },
+  { className: 'rug-b', src: '/rugs/botanical.webp' },
+  { className: 'rug-c', src: '/rugs/arch.webp' },
+  { className: 'rug-d', src: '/rugs/wave.webp' },
 ]
 
 export function RugScatter() {

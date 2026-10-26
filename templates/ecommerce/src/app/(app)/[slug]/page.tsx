@@ -7,7 +7,6 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import { homeStaticData } from '@/endpoints/seed/home-static'
-import { CollectionRibbon } from '@/components/CollectionRibbon'
 import { FeaturedRugs } from '@/components/FeaturedRugs'
 import { StorefrontHero } from '@/components/StorefrontHero'
 import React from 'react'
@@ -66,9 +65,8 @@ export default async function Page({ params }: Args) {
 
   if (slug === 'home') {
     return (
-      <article>
+      <article className="bg-[#e5f0e6]">
         <StorefrontHero />
-        <CollectionRibbon />
         <FeaturedRugs />
       </article>
     )

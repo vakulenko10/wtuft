@@ -1,4 +1,3 @@
-import { Grid } from '@/components/Grid'
 import { ProductGridItem } from '@/components/ProductGridItem'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -76,10 +75,9 @@ export default async function ShopPage({ searchParams }: Props) {
   const resultsText = products.docs.length > 1 ? 'results' : 'result'
 
   return (
-    <div className="container py-16">
-      <header className="mb-8 max-w-2xl">
-        <p className="mb-2 text-xs tracking-[0.28em] text-primary uppercase">The collection</p>
-        <h1 className="text-3xl text-foreground">Tufted rugs</h1>
+    <div className="pb-8">
+      <header className="mb-8">
+        <h1 className="text-3xl font-medium tracking-tight text-[#092328]">Tufted rugs</h1>
       </header>
       {searchValue ? (
         <p className="mb-4">
@@ -95,11 +93,15 @@ export default async function ShopPage({ searchParams }: Props) {
       )}
 
       {products?.docs.length > 0 ? (
-        <Grid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2">
           {products.docs.map((product) => {
-            return <ProductGridItem key={product.id} product={product} />
+            return (
+              <li key={product.id}>
+                <ProductGridItem product={product} />
+              </li>
+            )
           })}
-        </Grid>
+        </ul>
       ) : null}
     </div>
   )

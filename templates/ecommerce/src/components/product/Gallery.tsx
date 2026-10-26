@@ -10,11 +10,19 @@ import React, { useEffect } from 'react'
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import { DefaultDocumentIDType } from 'payload'
 
+type Cutout = {
+  alt: string
+  height: number
+  src: string
+  width: number
+}
+
 type Props = {
+  cutout?: Cutout
   gallery: NonNullable<Product['gallery']>
 }
 
-export const Gallery: React.FC<Props> = ({ gallery }) => {
+export const Gallery: React.FC<Props> = ({ cutout, gallery }) => {
   const searchParams = useSearchParams()
   const [current, setCurrent] = React.useState(0)
   const [api, setApi] = React.useState<CarouselApi>()
@@ -47,13 +55,26 @@ export const Gallery: React.FC<Props> = ({ gallery }) => {
     }
   }, [searchParams, api, gallery])
 
+  if (cutout) {
+    return (
+      <img
+        alt={cutout.alt}
+        className="h-auto w-full"
+        height={cutout.height}
+        src={cutout.src}
+        style={{ filter: 'drop-shadow(0 28px 24px rgb(9 35 40 / 14%))' }}
+        width={cutout.width}
+      />
+    )
+  }
+
   return (
     <div>
-      <div className="relative mb-8 w-full overflow-hidden rounded-lg bg-[#092328] p-6">
+      <div className="relative mb-8 w-full">
         <Media
           resource={gallery[current].image}
           className="w-full"
-          imgClassName="w-full rounded-lg object-contain"
+          imgClassName="w-full object-contain"
         />
       </div>
 
