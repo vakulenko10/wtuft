@@ -117,10 +117,10 @@ export default async function ProductPage({ params }: Args) {
         }}
         type="application/ld+json"
       />
-      <div className="bg-[#e5f0e6] text-[#092328]">
+      <div className="text-[#15370D]">
         <div className="container pt-8 pb-16">
           <Link
-            className="inline-flex min-h-11 items-center text-sm text-[#12544F] underline decoration-[#8BBB92] underline-offset-4 hover:decoration-[#12544F]"
+            className="inline-flex min-h-11 items-center text-base font-medium text-[#15370D] underline decoration-[#15370D] underline-offset-4"
             href="/shop"
           >
             All products
@@ -166,8 +166,8 @@ function RelatedProducts({ products }: { products: Product[] }) {
   if (!products.length) return null
 
   return (
-    <div className="mt-16 border-t border-[#8BBB92] pt-10">
-      <h2 className="mb-8 text-2xl font-medium tracking-tight">More rugs</h2>
+    <div className="mt-16 border-t border-[#728E6D] pt-10">
+      <h2 className="mb-8 font-display text-4xl leading-none font-medium">More rugs</h2>
       <ul className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-3">
         {products.map((product) => (
           <li key={product.id}>

@@ -65,7 +65,7 @@ export default async function Page({ params }: Args) {
 
   if (slug === 'home') {
     return (
-      <article className="bg-[#e5f0e6]">
+      <article>
         <StorefrontHero />
         <FeaturedRugs />
       </article>

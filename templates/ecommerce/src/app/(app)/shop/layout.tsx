@@ -7,7 +7,7 @@ import React, { Suspense } from 'react'
 export default function ShopLayout({ children }: { children: React.ReactNode }) {
   return (
     <Suspense fallback={null}>
-      <div className="bg-[#e5f0e6] text-[#092328]">
+      <div className="text-[#15370D]">
         <div className="container flex flex-col gap-8 pt-8 pb-16">
           <Search />
 

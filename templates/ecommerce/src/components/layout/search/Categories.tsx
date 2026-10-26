@@ -50,7 +50,7 @@ async function CategoryList() {
 
   return (
     <div>
-      <h3 className="mb-2 text-sm font-medium text-[#092328]">Category</h3>
+      <h3 className="mb-3 font-display text-lg font-medium text-[#15370D]">Category</h3>
 
       <ul>
         {visibleCategories.map((category) => {

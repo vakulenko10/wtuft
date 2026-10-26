@@ -8,10 +8,24 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { ensureStartsWith } from '@/utilities/ensureStartsWith'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
-import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { Fraunces, Outfit } from 'next/font/google'
 import React from 'react'
 import './globals.css'
+
+const fraunces = Fraunces({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  weight: ['400', '500', '600'],
+})
+
+const outfit = Outfit({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  weight: ['400', '500', '600'],
+})
 
 /* const { SITE_NAME, TWITTER_CREATOR, TWITTER_SITE } = process.env
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
@@ -43,7 +57,7 @@ const twitterSite = TWITTER_SITE ? ensureStartsWith(TWITTER_SITE, 'https://') : 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      className={[GeistSans.variable, GeistMono.variable].filter(Boolean).join(' ')}
+      className={[fraunces.variable, outfit.variable, GeistMono.variable].filter(Boolean).join(' ')}
       lang="en"
       suppressHydrationWarning
     >
@@ -54,7 +68,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </head>
       <body>
         <a
-          className="absolute start-4 top-4 z-50 -translate-y-24 rounded-full bg-[#f4f6f2] px-5 py-3 text-sm font-medium text-[#092328] focus:translate-y-0"
+          className="absolute start-4 top-4 z-50 -translate-y-24 rounded-full bg-[#E5CD82] px-5 py-3 text-sm font-medium text-[#15370D] focus:translate-y-0"
           href="#storefront-content"
         >
           Skip to content

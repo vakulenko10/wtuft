@@ -62,7 +62,7 @@ export const Gallery: React.FC<Props> = ({ cutout, gallery }) => {
         className="h-auto w-full"
         height={cutout.height}
         src={cutout.src}
-        style={{ filter: 'drop-shadow(0 28px 24px rgb(9 35 40 / 14%))' }}
+        style={{ filter: 'drop-shadow(0 28px 22px rgb(21 55 13 / 16%))' }}
         width={cutout.width}
       />
     )

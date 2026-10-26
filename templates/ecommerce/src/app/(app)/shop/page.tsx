@@ -77,7 +77,9 @@ export default async function ShopPage({ searchParams }: Props) {
   return (
     <div className="pb-8">
       <header className="mb-8">
-        <h1 className="text-3xl font-medium tracking-tight text-[#092328]">Tufted rugs</h1>
+        <h1 className="font-display text-4xl leading-none font-medium text-[#15370D] md:text-5xl">
+          Tufted rugs
+        </h1>
       </header>
       {searchValue ? (
         <p className="mb-4">

@@ -21,7 +21,9 @@ export function FilterList({ list, title }: { list: ListItem[]; title?: string }
   return (
     <React.Fragment>
       <nav>
-        {title ? <h3 className="mb-2 text-sm font-medium text-[#092328]">{title}</h3> : null}
+        {title ? (
+          <h3 className="mb-3 font-display text-lg font-medium text-[#15370D]">{title}</h3>
+        ) : null}
         <ul className="hidden md:block">
           <Suspense fallback={null}>
             <FilterItemList list={list} />

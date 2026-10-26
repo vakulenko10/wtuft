@@ -9,7 +9,7 @@ import React from 'react'
 
 const featuredSlug = 'straw-hat-portrait'
 
-const rugShadow = { filter: 'drop-shadow(0 28px 24px rgb(9 35 40 / 14%))' }
+const rugShadow = { filter: 'drop-shadow(0 28px 22px rgb(21 55 13 / 16%))' }
 
 export async function StorefrontHero() {
   const payload = await getPayload({ config: configPromise })
@@ -32,20 +32,21 @@ export async function StorefrontHero() {
   const cutout = rugCutouts[featuredSlug]
 
   return (
-    <section aria-labelledby="storefront-hero-heading" className="bg-[#e5f0e6] text-[#092328]">
-      <div className="container grid items-center gap-8 py-8 md:py-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-6 lg:py-14">
+    <section aria-labelledby="storefront-hero-heading" className="text-[#15370D]">
+      <div className="container grid items-end gap-8 py-10 md:py-14 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-8 lg:py-20">
         <div className="max-w-xl">
           <h1
-            className="max-w-[11ch] text-[3.25rem] leading-[0.9] font-medium tracking-[-0.045em] text-[#092328] md:text-7xl lg:text-[5.4rem]"
+            className="font-display text-[3.5rem] leading-[0.86] font-medium tracking-[-0.04em] text-[#15370D] md:text-7xl lg:text-[6.25rem]"
             id="storefront-hero-heading"
           >
-            Hand-tufted rugs
+            <span className="block">Hand-tufted</span>
+            <span className="block">rugs</span>
           </h1>
-          <p className="mt-5 max-w-[24rem] text-base leading-relaxed text-[#12544F] md:text-lg">
+          <p className="mt-6 max-w-[22rem] text-lg leading-relaxed font-normal text-[#15370D]">
             Wool and cotton, tufted in small runs.
           </p>
           <Link
-            className="mt-6 inline-flex min-h-12 items-center text-base text-[#092328] underline decoration-[#12544F] decoration-2 underline-offset-8 hover:decoration-[#092328]"
+            className="mt-8 inline-flex min-h-12 items-center text-lg font-medium text-[#15370D] underline decoration-[#15370D] decoration-2 underline-offset-8"
             href="/shop"
           >
             Shop the collection
@@ -60,10 +61,10 @@ export async function StorefrontHero() {
             style={rugShadow}
             width={cutout.width}
           />
-          <span className="mt-4 flex items-baseline justify-between gap-4">
-            <span className="text-lg text-[#092328]">{title}</span>
+          <span className="mt-5 flex items-baseline justify-between gap-4">
+            <span className="font-display text-2xl font-medium text-[#15370D]">{title}</span>
             {typeof price === 'number' ? (
-              <Price amount={price} as="span" className="text-base text-[#12544F]" />
+              <Price amount={price} as="span" className="text-lg font-medium text-[#15370D]" />
             ) : null}
           </span>
         </Link>

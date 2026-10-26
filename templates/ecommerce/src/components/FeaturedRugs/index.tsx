@@ -24,12 +24,14 @@ export async function FeaturedRugs() {
   if (!products.docs.length) return null
 
   return (
-    <section className="bg-[#e5f0e6] pb-20 text-[#092328]">
+    <section className="pb-20 text-[#15370D]">
       <div className="container">
-        <div className="mb-10 flex items-end justify-between gap-4 border-t border-[#8BBB92] pt-8">
-          <h2 className="text-3xl font-medium tracking-tight">The collection</h2>
+        <div className="mb-10 flex items-end justify-between gap-4 border-t border-[#728E6D] pt-8">
+          <h2 className="font-display text-4xl leading-none font-medium md:text-5xl">
+            The collection
+          </h2>
           <Link
-            className="inline-flex min-h-11 items-center text-sm underline decoration-[#8BBB92] underline-offset-4 hover:decoration-[#12544F]"
+            className="inline-flex min-h-11 items-center text-base font-medium text-[#15370D] underline decoration-[#15370D] underline-offset-4"
             href="/shop"
           >
             Shop all
