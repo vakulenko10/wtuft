@@ -46,7 +46,7 @@ export async function StorefrontHero() {
             Wool and cotton, tufted in small runs.
           </p>
           <Link
-            className="mt-8 inline-flex min-h-12 items-center text-lg font-medium text-[#15370D] underline decoration-[#15370D] decoration-2 underline-offset-8"
+            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-[#15370D] px-6 text-base font-medium text-[#FFF2B4]"
             href="/shop"
           >
             Shop the collection

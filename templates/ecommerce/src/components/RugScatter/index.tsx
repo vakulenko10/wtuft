@@ -1,19 +1,31 @@
-const rugs = [
-  { className: 'rug-a', src: '/rugs/botanical.webp' },
-  { className: 'rug-b', src: '/rugs/arch.webp' },
-  { className: 'rug-c', src: '/rugs/wave.webp' },
-  { className: 'rug-d', src: '/rugs/straw-hat.webp' },
-  { className: 'rug-e', src: '/rugs/botanical.webp' },
-  { className: 'rug-f', src: '/rugs/wave.webp' },
-  { className: 'rug-g', src: '/rugs/arch.webp' },
-  { className: 'rug-h', src: '/rugs/straw-hat.webp' },
-]
+type FlowingRug = {
+  alignClass: string
+  rotate: number
+  src: string
+  widthClass: string
+}
 
-export function RugScatter() {
+type Props = {
+  rugs: FlowingRug[]
+}
+
+const rugShadow = { filter: 'drop-shadow(0 18px 14px rgb(21 55 13 / 16%))' }
+
+export function FlowingRugs({ rugs }: Props) {
   return (
-    <div aria-hidden="true" className="rug-scatter">
+    <div aria-hidden="true" className="container flex flex-col gap-6 py-6">
       {rugs.map((rug) => (
-        <img key={rug.className} alt="" className={rug.className} src={rug.src} />
+        <img
+          alt=""
+          className={`h-auto ${rug.widthClass} ${rug.alignClass}`}
+          key={`${rug.src}-${rug.rotate}`}
+          src={rug.src}
+          style={{
+            ...rugShadow,
+            position: 'relative',
+            transform: `rotate(${rug.rotate}deg)`,
+          }}
+        />
       ))}
     </div>
   )

@@ -1,4 +1,5 @@
-import { ProductGridItem } from '@/components/ProductGridItem'
+import { FeaturedCarousel } from '@/components/FeaturedRugs/Carousel'
+import { featuredSlugs } from '@/components/rugSales'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import Link from 'next/link'
@@ -11,25 +12,34 @@ export async function FeaturedRugs() {
     collection: 'products',
     depth: 1,
     draft: false,
-    limit: 4,
+    limit: 12,
     overrideAccess: false,
-    sort: 'title',
     where: {
-      _status: {
-        equals: 'published',
-      },
+      and: [{ _status: { equals: 'published' } }, { slug: { in: featuredSlugs } }],
     },
   })
 
-  if (!products.docs.length) return null
+  const featured = featuredSlugs
+    .map((slug) => products.docs.find((product) => product.slug === slug))
+    .filter((product) => product != null)
+
+  if (!featured.length) return null
 
   return (
-    <section className="pb-20 text-[#15370D]">
+    <section aria-labelledby="featured-rugs-heading" className="pb-16 text-[#15370D]">
       <div className="container">
-        <div className="mb-10 flex items-end justify-between gap-4 border-t border-[#728E6D] pt-8">
-          <h2 className="font-display text-4xl leading-none font-medium md:text-5xl">
-            The collection
-          </h2>
+        <div className="flex items-end justify-between gap-4 border-t border-[#728E6D] pt-8">
+          <div>
+            <h2
+              className="font-display text-4xl leading-none font-medium md:text-5xl"
+              id="featured-rugs-heading"
+            >
+              Featured
+            </h2>
+            <p className="mt-3 max-w-md text-base leading-relaxed">
+              Three rugs on sale this month.
+            </p>
+          </div>
           <Link
             className="inline-flex min-h-11 items-center text-base font-medium text-[#15370D] underline decoration-[#15370D] underline-offset-4"
             href="/shop"
@@ -37,13 +47,7 @@ export async function FeaturedRugs() {
             Shop all
           </Link>
         </div>
-        <ul className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
-          {products.docs.map((product) => (
-            <li key={product.id}>
-              <ProductGridItem product={product} />
-            </li>
-          ))}
-        </ul>
+        <FeaturedCarousel products={featured} />
       </div>
     </section>
   )

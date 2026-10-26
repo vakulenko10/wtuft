@@ -235,6 +235,16 @@ body {
   line-height: 1.65;
 }
 
+:root {
+  --featured-slide: 86%;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --featured-slide: 48%;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -246,116 +256,4 @@ h6 {
   letter-spacing: -0.03em;
   line-height: 1.02;
   color: #15370d;
-}
-
-.rug-scatter {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.rug-scatter img {
-  position: absolute;
-  width: 12rem;
-  height: auto;
-  filter: drop-shadow(0 16px 14px rgb(21 55 13 / 18%));
-}
-
-.rug-scatter .rug-a {
-  top: -2rem;
-  inset-inline-end: -10rem;
-  rotate: 18deg;
-}
-
-.rug-scatter .rug-b {
-  top: 36%;
-  inset-inline-start: -10rem;
-  rotate: -16deg;
-}
-
-.rug-scatter .rug-c {
-  bottom: -3rem;
-  inset-inline-end: -10rem;
-  rotate: 12deg;
-}
-
-.rug-scatter .rug-d {
-  bottom: 10%;
-  inset-inline-start: -10rem;
-  rotate: -8deg;
-}
-
-.rug-scatter .rug-e,
-.rug-scatter .rug-f,
-.rug-scatter .rug-g,
-.rug-scatter .rug-h {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .rug-scatter img {
-    width: 16rem;
-  }
-
-  .rug-scatter .rug-a,
-  .rug-scatter .rug-c {
-    inset-inline-end: -12rem;
-  }
-
-  .rug-scatter .rug-b,
-  .rug-scatter .rug-d {
-    inset-inline-start: -12rem;
-  }
-
-  .rug-scatter .rug-e {
-    display: block;
-    top: -3rem;
-    inset-inline-start: -12rem;
-    width: 15rem;
-    rotate: -20deg;
-  }
-
-  .rug-scatter .rug-f {
-    display: block;
-    bottom: -4rem;
-    inset-inline-start: -11rem;
-    width: 15rem;
-    rotate: 10deg;
-  }
-}
-
-@media (min-width: 1440px) {
-  .rug-scatter img {
-    width: 18rem;
-  }
-
-  .rug-scatter .rug-a,
-  .rug-scatter .rug-c,
-  .rug-scatter .rug-h {
-    inset-inline-end: -11rem;
-  }
-
-  .rug-scatter .rug-b,
-  .rug-scatter .rug-d,
-  .rug-scatter .rug-e,
-  .rug-scatter .rug-f {
-    inset-inline-start: -11rem;
-  }
-
-  .rug-scatter .rug-g {
-    display: block;
-    top: 18%;
-    inset-inline-end: -11rem;
-    width: 18rem;
-    rotate: 8deg;
-  }
-
-  .rug-scatter .rug-h {
-    display: block;
-    bottom: -3rem;
-    width: 17rem;
-    rotate: -12deg;
-  }
 }
