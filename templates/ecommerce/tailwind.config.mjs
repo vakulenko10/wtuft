@@ -1,3 +1,6 @@
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
 const plugin = require('tailwindcss/plugin')
 /** @type {import('tailwindcss').Config} */
 export default {

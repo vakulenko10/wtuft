@@ -9,18 +9,51 @@ import { CategoryItem } from './Categories.client'
 async function CategoryList() {
   const payload = await getPayload({ config: configPromise })
 
-  const categories = await payload.find({
-    collection: 'categories',
-    sort: 'title',
-    overrideAccess: true,
-  })
+  const [categories, products] = await Promise.all([
+    payload.find({
+      collection: 'categories',
+      limit: 100,
+      overrideAccess: true,
+      sort: 'title',
+    }),
+    payload.find({
+      collection: 'products',
+      depth: 0,
+      draft: false,
+      limit: 200,
+      overrideAccess: false,
+      pagination: false,
+      select: {
+        categories: true,
+      },
+      where: {
+        _status: {
+          equals: 'published',
+        },
+      },
+    }),
+  ])
+
+  const usedCategoryIDs = new Set<string>()
+
+  for (const product of products.docs) {
+    for (const category of product.categories || []) {
+      if (typeof category === 'string') usedCategoryIDs.add(category)
+      else if (category && typeof category === 'object' && category.id)
+        usedCategoryIDs.add(category.id)
+    }
+  }
+
+  const visibleCategories = categories.docs.filter((category) => usedCategoryIDs.has(category.id))
+
+  if (!visibleCategories.length) return null
 
   return (
     <div>
-      <h3 className="text-xs mb-2 text-neutral-500 dark:text-neutral-400">Category</h3>
+      <h3 className="mb-3 font-display text-lg font-medium text-[#15370D]">Category</h3>
 
       <ul>
-        {categories.docs.map((category) => {
+        {visibleCategories.map((category) => {
           return (
             <li key={category.id}>
               <CategoryItem category={category} />

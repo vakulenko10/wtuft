@@ -21,26 +21,23 @@ export function HeaderClient({ header }: Props) {
   const pathname = usePathname()
 
   return (
-    <div className="relative z-20 border-b bg-background">
-      <nav className="flex items-center md:items-end justify-between container pt-2">
+    <div className="relative z-20 border-b border-[#728E6D] bg-[#FFF2B4]">
+      <nav className="container flex items-center justify-between pt-2">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
             <MobileMenu menu={menu} />
           </Suspense>
         </div>
-        <div className="flex w-full items-end justify-between">
-          <div className="flex w-full items-end gap-6 md:w-1/3">
-            <Link
-              className="flex w-full items-center justify-center gap-3 pt-4 pb-4 md:w-auto"
-              href="/"
-            >
-              <LogoIcon className="w-8 h-auto" />
-              <span className="text-sm font-medium tracking-[0.28em] text-foreground uppercase">
+        <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center gap-8 md:w-auto">
+            <Link className="flex items-center gap-3 py-3" href="/">
+              <LogoIcon className="h-auto w-8" />
+              <span className="font-display text-2xl font-medium tracking-[-0.03em] text-[#15370D]">
                 Wtuft
               </span>
             </Link>
             {menu.length ? (
-              <ul className="hidden gap-4 text-sm md:flex md:items-center">
+              <ul className="hidden gap-6 text-base md:flex md:items-center">
                 {menu.map((item) => (
                   <li key={item.id}>
                     <CMSLink

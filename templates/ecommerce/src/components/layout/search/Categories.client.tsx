@@ -34,10 +34,14 @@ export const CategoryItem: React.FC<Props> = ({ category }) => {
 
   return (
     <button
+      className={clsx(
+        'inline-flex min-h-11 items-center text-sm text-foreground hover:cursor-pointer',
+        {
+          underline: isActive,
+        },
+      )}
       onClick={() => setQuery()}
-      className={clsx('hover:cursor-pointer', {
-        ' underline': isActive,
-      })}
+      type="button"
     >
       {category.title}
     </button>

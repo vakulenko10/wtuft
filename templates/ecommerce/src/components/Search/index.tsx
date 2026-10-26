@@ -34,7 +34,7 @@ export const Search: React.FC<Props> = ({ className }) => {
     <form className={cn('relative w-full', className)} onSubmit={onSubmit}>
       <input
         autoComplete="off"
-        className="w-full rounded-lg border bg-white px-4 py-2 text-sm text-black placeholder:text-neutral-500 dark:border-neutral-800 dark:bg-black dark:text-white dark:placeholder:text-neutral-400"
+        className="min-h-12 w-full rounded-lg border border-[#728E6D] bg-[#E5CD82] px-4 py-3 pe-10 text-base text-[#15370D] placeholder:text-[#15370D]"
         defaultValue={searchParams?.get('q') || ''}
         key={searchParams?.get('q')}
         name="search"
